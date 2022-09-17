@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import HalamanDepan from "./components/halamanDepan/HalamanDepan";
+import Navbarss from "./components/navbar/Navbarss";
 
 function App() {
+  let route = (
+    <Fragment>
+      <Route path="/profile" element={<HalamanDepan />} />
+      <Route path="*" element={<Navigate to="/profile" replace />} />
+    </Fragment>
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Navbarss />
+      <Routes>{route}</Routes>
+    </Fragment>
   );
 }
 
